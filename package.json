@@ -1,5 +1,5 @@
 {
-  "name": "cyber-rss",
+  "name": "cyber-rss-parser",
   "version": "1.0.0",
   "description": "Rss parsing for Cyber links",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/denis-skripnik/cyber-cyber-rss.git"
+    "url": "git+https://github.com/denis-skripnik/cyber-rss-parser.git"
   },
   "keywords": [
     "cyber",
@@ -20,9 +20,9 @@
   "author": "denis-skripnik",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/denis-skripnik/cyber-cyber-rss/issues"
+    "url": "https://github.com/denis-skripnik/cyber-rss-parser/issues"
   },
-  "homepage": "https://github.com/denis-skripnik/cyber-cyber-rss#readme",
+  "homepage": "https://github.com/denis-skripnik/cyber-rss-parser#readme",
   "dependencies": {
     "auto_cyb": "git+https://github.com/CipherDogs/cyberjs.git",
     "ipfs": "^0.50.2",

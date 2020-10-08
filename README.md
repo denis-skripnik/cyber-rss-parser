@@ -5,6 +5,7 @@
 1. Download this repo:
 git clone https://github.com/denis-skripnik/cyber-rss-parser
 2. Go to the project directory;
+And check the permissions for the links file.json and change them to 0777 if they differ from the specified one;
 3. Install node-gyp for ipfs:
 npm install -g node-gyp
 4. If you are in Windows, install windows-build-tools:
@@ -28,3 +29,8 @@ pm2 start index.js
 
 ## That is all
 Thanks and we will be glad to receive pull requests.
+
+## Author
+Blind developer Denis Skripnik: https://denis-skripnik.name
+Cyber address for donates:
+**cyber16yf94eecl6h44l5w7zp75skh3rg0k4vee549dh**
