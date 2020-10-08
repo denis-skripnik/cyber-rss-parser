@@ -44,6 +44,6 @@ async function main() {
     
     setInterval(createTransactions, 10000);
 }
+main();
 runReader();
 setInterval(runReader, 3600000);
-main();
