@@ -22,7 +22,6 @@ async function link(from, to) {
   if(!addressInfo.data.result) { return console.error('error: addressInfo.data.result undefined') };
   const account = addressInfo.data.result.account;
   if(!account) { return console.error('error: addressInfo.data.result.account undefined') }
-  console.log('Данные ошибки, sequence: ' + parseInt(account.sequence, 10) + ', chain_id: ' + sender.chain);
   const acc = {
       address: account.address,
       chain_id: sender.chain,
