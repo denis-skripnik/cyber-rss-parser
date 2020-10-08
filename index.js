@@ -37,12 +37,13 @@ async function runReader() {
     // модуль прочитает каждую ленту по очереди и передаст событие с каждой записбю из ленты
     my_rss.reader(conf.rss_links);
 
-    setInterval(createTransactions, 10000);
 }
 
 async function main() {
     node = await Ipfs.create()
+    
+    setInterval(createTransactions, 10000);
 }
 runReader();
-setInterval(runReader, 360000);
+setInterval(runReader, 3600000);
 main();
