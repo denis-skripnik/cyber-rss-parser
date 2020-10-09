@@ -7,26 +7,19 @@ const { add } = require('ipfs/src/core/components');
 
 let node
 
-async function main() {
-    setInterval(createTransactions, 10000);
-    node = await Ipfs.create()
-    
-}
-
-main();
-
 lf.pathFile('./links.json')
 
 my_rss.on('item', async function(item) {
-        const fileAdded = await node.add({
-        path: item.title,
-        content: item.content
-    })
     const keywordAdded = await node.add({
         path: 'keyword' + parseInt(new Date().getTime()),
         content: item.title
     })
-lf.addItem([String(fileAdded.cid), String(keywordAdded.cid)]);
+    const fileAdded = await node.add({
+        path: item.title,
+        content: item.content
+    })
+console.log('Cid запроса: ' + String(keywordAdded.cid) + ', CID файла: ' + String(fileAdded.cid));
+    lf.addItem([String(keywordAdded.cid), String(fileAdded.cid)]);
 })
 my_rss.on('error', function(error) {
     console.error('my_rss error', error);
@@ -48,5 +41,13 @@ async function runReader() {
 
 }
 
-runReader();
+async function main() {
+    setInterval(createTransactions, 10000);
+    node = await Ipfs.create()
+
+    runReader();
+}
+
+main();
+
 setInterval(runReader, 3600000);
