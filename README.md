@@ -6,11 +6,17 @@
 git clone https://github.com/denis-skripnik/cyber-rss-parser
 2. Go to the project directory;
 And check the permissions for the links file.json and change them to 0777 if they differ from the specified one;
-3. Install node-gyp for ipfs:
+3. Before installing send commands for ipfs npm package:
 npm install -g node-gyp
-4. If you are in Windows, install windows-build-tools:
+3.1. If your Os is Linux Ubuntu or other:
+sudo apt-get install python3 -y
+sudo apt-get install python3-dev python3-pip
+sudo apt-get install python-dev python-pip -y
+sudo pip3 install ast
+sudo pip install ast
+3.2. If you are in Windows, install windows-build-tools:
 npm install --global --production windows-build-tools
-5. Send command (In windows, open windows Powershell or command line in administration mode):
+4. Send command (In windows, open windows Powershell or command line in administration mode, In linux send command with sudo):
 npm install
 
 ## Configuration
@@ -23,9 +29,9 @@ Open config.json and change data:
 
 ## run
 1. If not install pm2:
-node index.js
+node cyber_rss.js
 2. If pm2 is installed:
-pm2 start index.js
+pm2 start cyber_rss.js
 
 ## That is all
 Thanks and we will be glad to receive pull requests.

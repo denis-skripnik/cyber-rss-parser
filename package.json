@@ -2,7 +2,7 @@
   "name": "cyber-rss-parser",
   "version": "1.0.0",
   "description": "Rss parsing for Cyber links",
-  "main": "index.js",
+  "main": "cyber_rss.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
