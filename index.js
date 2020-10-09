@@ -6,6 +6,15 @@ const lf = require('./linksfile');
 const { add } = require('ipfs/src/core/components');
 
 let node
+
+async function main() {
+    setInterval(createTransactions, 10000);
+    node = await Ipfs.create()
+    
+}
+
+main();
+
 lf.pathFile('./links.json')
 
 my_rss.on('item', async function(item) {
@@ -39,11 +48,5 @@ async function runReader() {
 
 }
 
-async function main() {
-    node = await Ipfs.create()
-    
-    setInterval(createTransactions, 10000);
-}
-main();
 runReader();
 setInterval(runReader, 3600000);
