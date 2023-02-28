@@ -3,7 +3,6 @@ const conf = require('./config.json');
 const Ipfs = require('ipfs')
 const cyber = require('./cyber');
 const lf = require('./linksfile');
-const { add } = require('ipfs/src/core/components');
 
 let node
 
@@ -18,36 +17,39 @@ my_rss.on('item', async function(item) {
         path: item.title,
         content: item.content
     })
-console.log('Cid запроса: ' + String(keywordAdded.cid) + ', CID файла: ' + String(fileAdded.cid));
-    lf.addItem([String(keywordAdded.cid), String(fileAdded.cid)]);
+    console.log('Cid запроса: ' + String(keywordAdded.cid) + ', CID файла: ' + String(fileAdded.cid));
+    
+    // Создаем киберлинк для связывания заголовка и контента
+    const link = await cyber.link(keywordAdded.cid.toString(), fileAdded.cid.toString());
+    console.log('Создан киберлинк: ' + link);
+    
+    // Добавляем киберлинк в список связей
+    lf.addItem(link);
 })
+
 my_rss.on('error', function(error) {
     console.error('my_rss error', error);
 })
 
 async function createTransactions() {
     let link = lf.getItem();
-if (link) {
-    let res = await cyber.link(link[0], link[1]);
-console.log(JSON.stringify(res));
-}
-
+    if (link) {
+        let res = await cyber.link(link[0], link[1]);
+        console.log(JSON.stringify(res));
+    }
 }
 
 async function runReader() {
     // к примеру при загрузке приложения передавать список rss лент для чтения
     // модуль прочитает каждую ленту по очереди и передаст событие с каждой записбю из ленты
     my_rss.reader(conf.rss_links);
-
 }
 
 async function main() {
     setInterval(createTransactions, 10000);
-    node = await Ipfs.create()
-
+    node = await Ipfs.create();
     runReader();
 }
 
 main();
-
 setInterval(runReader, 3600000);
